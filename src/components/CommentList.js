@@ -1,14 +1,17 @@
 import React from "react";
-import { comment } from "../../node_modules/postcss";
+import { connect } from "react-redux";
 
-export const CommentList = ({ comments }) => {
+const CommentList = (props) => {
   
   return (
     <div>
       <ul>
-        {comments.map((comment, index) => <li key={index}>{comment}</li>)}
+        {props.comments.map((comment, index) => <li key={index}>{comment}</li>)}
       </ul>
     </div>
   );
 
 }
+
+const mapDispatchToProps = (state) => ({ comments: state.comment })
+export default connect(mapDispatchToProps)(CommentList);
